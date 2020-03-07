@@ -3,6 +3,26 @@
 	API
 </h1>
 
+## :rocket: Technology
+
+This project was developed with the following technologies:
+
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [nodemon](https://nodemon.io/)
+- [Sucrase](https://github.com/alangpierce/sucrase)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Redis](https://redis.io/)
+- [Bee-Queue](https://github.com/bee-queue/bee-queue)
+- [Docker](https://www.docker.com/docker-community)
+- [Sequelize](http://docs.sequelizejs.com/)
+- [node-postgres](https://www.npmjs.com/package/pg)
+- [JWT](https://jwt.io/)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
+- [Yup](https://www.npmjs.com/package/yup)
+- [VS Code](https://code.visualstudio.com/) with [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+
 
 
 ## Routes
