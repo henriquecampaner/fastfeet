@@ -57,4 +57,17 @@ Method | URI | Parameters | Body | Description | Return |
 -------|-----|:----------:|:----:|-----------|:-------:|
 POST | /orders | `token JWT` | <code><span style="color:red">product</span></code>, <code><span style="color:red">recipient_id</span></code>, <code><span style="color:red">deliveryman_id</span></code> | Create Order | `{ id, product, deliveryman, recipient }` |
 PUT | /orders/:id | `token JWT` e `id`: id referring to the recipient in the database |  <code><span style="color:red">product</span></code>, <code><span style="color:red">recipient_id</span></code>, <code><span style="color:red">deliveryman_id</span></code> | Edit Order | `{ id, product, deliveryman, recipient }` |
-DELETE | /orders/:id | `token JWT` e `id`: id referring to the recipient in the database | ❌ | Delete a deliveryman | `{ id, product, deliveryman, recipient }` |
+DELETE | /orders/:orderId/problems | `token JWT` e `orderId`: id referring to the recipient in the database | ❌ | Delete an order | `{ id, product, deliveryman, recipient }` |
+
+
+### Deliveryman routes - JWT Token not required
+
+### Orders Problems
+
+Routes for ** order management **
+
+Method | URI | Parameters | Body | Description | Return |
+-------|-----|:----------:|:----:|-----------|:-------:|
+GET | /orders/problems/list | ❌ | ❌ | List deliveries with problem | `{ id, description, order_id }` |
+POST | /orders/problems |  ❌ | <code><span style="color:red">description</span></code>, <code><span style="color:red">order_id</span></code> | Create Delivery Problem | `{ id, description, order_id }` |
+GET | /orders/:orderId/problems | `orderId:` orderId referring to the recipient in the database | ❌ | List delivery with problem | `{ id, description, order_id }` |
