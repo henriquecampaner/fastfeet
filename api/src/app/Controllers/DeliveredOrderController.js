@@ -1,4 +1,5 @@
 import { Op } from 'sequelize';
+import * as Yup from 'yup';
 import Recipient from '../Models/Recipient';
 import Orders from '../Models/Orders';
 import Deliveryman from '../Models/Deliveryman';
@@ -40,6 +41,15 @@ class DeliveredOrderController {
   }
 
   async update(req, res) {
+    const schema = Yup.object().shape({
+      orderId: Yup.string().required(),
+      signature_id: Yup.string().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
+
     const { orderId, signature_id } = req.body;
     const order = await Orders.findByPk(orderId);
 
@@ -50,7 +60,7 @@ class DeliveredOrderController {
     const end_date = new Date();
 
     order.update({ end_date, signature_id });
-    // order.save();
+    order.save();
 
     return res.json(order);
   }

@@ -35,28 +35,3 @@ class Orders extends Model {
 }
 
 export default Orders;
-
-// canceled: {
-//   type: Sequelize.VIRTUAL,
-//   get() {
-//     return !!this.canceled_at;
-//   },
-// },
-// delivered: {
-//   type: Sequelize.VIRTUAL,
-//   get() {
-//     return !!this.end_date;
-//   },
-// },
-// withdrawn: {
-//   type: Sequelize.VIRTUAL,
-//   get() {
-//     return !!this.start_date;
-//   },
-// },
-// pending: {
-//   type: Sequelize.VIRTUAL,
-//   get() {
-//     return !this.start_date;
-//   },
-// },

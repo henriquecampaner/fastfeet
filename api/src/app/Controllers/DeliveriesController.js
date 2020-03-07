@@ -5,7 +5,6 @@ import {
   setMinutes,
   setSeconds,
   parseISO,
-  startOfHour,
 } from 'date-fns';
 import { Op } from 'sequelize';
 import Recipient from '../Models/Recipient';
@@ -49,15 +48,16 @@ class DeliverymanController {
       0
     );
     const { id } = req.params;
+
     /** Check with the time is between 08:00 and 18:00 */
-    // if (
-    //   !isAfter(start_date, startInterval) ||
-    //   !isBefore(start_date, endInterval)
-    // ) {
-    //   res
-    //     .status(400)
-    //     .json({ error: 'Withdrawal available between 08:00 and 18:00' });
-    // }
+    if (
+      !isAfter(start_date, startInterval) ||
+      !isBefore(start_date, endInterval)
+    ) {
+      res
+        .status(400)
+        .json({ error: 'Withdrawal available between 08:00 and 18:00' });
+    }
 
     const order = await Orders.findByPk(order_id);
 
