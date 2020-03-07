@@ -18,24 +18,24 @@ POST | /sessions | ❌ | <code><span style="color:red">email</span></code> e <co
 
 ### Files
 
-Rota para envio de arquivo de imagem.
+Route for sending image file.
 
-Método | URI | Parâmetros | Body | Descrição | Retorno |
+Method | URI | Parameters | Body | Description | Return |
 -------|-----|:----------:|:----:|-----------|:-------:|
-POST | /files | Via Multipart Form: `file` | ❌ | Rota para enviar uma imagem | `{ id, url, name, path, createdAt, updatedAt }` |
+POST | /files | Via Multipart Form: `file` | ❌ | Route to send an image | `{ id, url, name, path, createdAt, updatedAt }` |
 
-### Rotas do admin: Exige Token JWT
+### Admin routes: Requires JWT Token
 
-> Em todas as rotas a seguir, **deve** ser enviado o token jwt. No formato <code style="color:red">Bearer TOKEN</code>
+>For all of the following routes, ** the jwt token ** must be sent. In the format <code style="color:red">Bearer TOKEN</code>
 
 ### Recipients
 
-Rotas para gerenciamento dos **destinatários**
+Routes for managing the ** recipients **
 
-Método | URI | Parâmetros | Body | Descrição | Retorno |
+Method | URI | Parameters | Body | Description | Return |
 -------|-----|:----------:|:----:|-----------|:-------:|
-POST | /recipients | `token JWT` | <code><span style="color:red">name</span></code>, <code><span style="color:red">street</span></code>, <code><span style="color:red">number</span></code>, <code><span style="color:red">state</span></code>, <code><span style="color:red">city</span></code> e <code><span style="color:red">zip_code</span></code> | Criar um destinatário | `{ id, name, street, number, state, city, zip_code }` |
-PUT | /recipients/:id | `token JWT` e `id`: id referente ao destinatário no banco de dados | <code><span style="color:red">name</span></code>, <code><span style="color:red">street</span></code>, <code><span style="color:red">number</span></code>, <code><span style="color:red">state</span></code>, <code><span style="color:red">city</span></code> e <code><span style="color:red">zip_code</span></code> | Criar um destinatário | `{ id, name, street, number, state, city, zip_code }` |
+POST | /recipients | `token JWT` | <code><span style="color:red">name</span></code>, <code><span style="color:red">street</span></code>, <code><span style="color:red">number</span></code>, <code><span style="color:red">city</span></code>, <code><span style="color:red">country</span></code> e <code><span style="color:red">postcode</span></code> | Create a recipient | `{ id, name, street, number, country, city, postcode }` |
+PUT | /recipients/:id | `token JWT` e `id`: id referring to the recipient in the database | <code><span style="color:red">name</span></code>, <code><span style="color:red">street</span></code>, <code><span style="color:red">number</span></code>, <code><span style="color:red">country</span></code>, <code><span style="color:red">city</span></code> e <code><span style="color:red">postcode</span></code> | Updates a recipient | `{ id, name, street, number, state, city, zip_code }` |
 
 
 ### Deliverymen
