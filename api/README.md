@@ -3,21 +3,18 @@
 	API
 </h1>
 
-Após executar os processos para [instalação e execução](https://github.com/EliasGcf/fastfeet/#computer-instala%C3%A7%C3%A3o-execu%C3%A7%C3%A3o-e-desenvolvimento), vamos utilizar as seguintes rotas em nosso backend.
 
-## Rotas
 
-### Legenda
+## Routes
 
-Body em vermelho: <span style="color:red">REQUIRED</span>
 
-### Sessões
+### Sessions
 
-Usada apenas para autenticação do admin:
+Used for admin authentication only:
 
-Método | URI | Parâmetros | Body | Descrição | Retorno |
+Method | URI | Parameters | Body | Description | Return |
 -------|-----|:----------:|:----:|-----------|:-------:|
-POST | /sessions | ❌ | <code><span style="color:red">email</span></code> e <code><span style="color:red">password</span></code> | Gera um token JWT. | `{ user: { id, name }, token }` |
+POST | /sessions | ❌ | <code><span style="color:red">email</span></code> e <code><span style="color:red">password</span></code> | Generates a JWT token. | `{ user: { id, name }, token }` |
 
 ### Files
 
