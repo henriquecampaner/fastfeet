@@ -36,15 +36,25 @@ Method | URI | Parameters | Body | Description | Return |
 -------|-----|:----------:|:----:|-----------|:-------:|
 POST | /recipients | `token JWT` | <code><span style="color:red">name</span></code>, <code><span style="color:red">street</span></code>, <code><span style="color:red">number</span></code>, <code><span style="color:red">city</span></code>, <code><span style="color:red">country</span></code> e <code><span style="color:red">postcode</span></code> | Create a recipient | `{ id, name, street, number, country, city, postcode }` |
 PUT | /recipients/:id | `token JWT` e `id`: id referring to the recipient in the database | <code><span style="color:red">name</span></code>, <code><span style="color:red">street</span></code>, <code><span style="color:red">number</span></code>, <code><span style="color:red">country</span></code>, <code><span style="color:red">city</span></code> e <code><span style="color:red">postcode</span></code> | Updates a recipient | `{ id, name, street, number, country, city, postcode }` |
-DELETE | /recipients/:id | `token JWT` e `id`: id referring to the recipient in the database | ❌ | Updates a recipient | `{ id, name, street, number, country, city, postcode }` |
+DELETE | /recipients/:id | `token JWT` e `id`: id referring to the recipient in the database | ❌ | Delete a recipient | `{ id, name, street, number, country, city, postcode }` |
 
 
-### Deliverymen
+### Deliveryman
 
-Rotas para genrenciamento dos **entregadores**
+** Delivery Managers ** Routes
 
-Método | URI | Parâmetros | Body | Descrição | Retorno |
+Method | URI | Parameters | Body | Description | Return |
 -------|-----|:----------:|:----:|-----------|:-------:|
-POST | /deliverymen | `token JWT` | <code><span style="color:red">name</span></code> e <code><span style="color:red">email</span></code> | Criar um entregador | `{ id, name, email }` |
-PUT | /deliverymen/:id | `token JWT` e `id`: id referente ao entregador no banco de dados | <code><span style="color:red">name</span></code> e <code><span style="color:red">email</span></code> | Editar um entregador | `{ id, name, email }` |
+POST | /deliveryman | `token JWT` | <code><span style="color:red">name</span></code> e <code><span style="color:red">email</span></code> | Create Delivery Man | `{ id, name, email }` |
+PUT | /deliveryman/:id | `token JWT` e `id`: id referring to the recipient in the database | <code><span style="color:red">name</span></code> e <code><span style="color:red">email</span></code> | Edit Delivery Man | `{ id, name, email }` |
+DELETE | /deliverymen/:id | `token JWT` e `id`: id referring to the recipient in the database | ❌ | Delete a deliveryman | `{ id, name, email }` |
 
+### Orders
+
+Routes for ** order management **
+
+Method | URI | Parameters | Body | Description | Return |
+-------|-----|:----------:|:----:|-----------|:-------:|
+POST | /orders | `token JWT` | <code><span style="color:red">product</span></code>, <code><span style="color:red">recipient_id</span></code>, <code><span style="color:red">deliveryman_id</span></code> | Create Order | `{ id, product, deliveryman, recipient }` |
+PUT | /orders/:id | `token JWT` e `id`: id referring to the recipient in the database |  <code><span style="color:red">product</span></code>, <code><span style="color:red">recipient_id</span></code>, <code><span style="color:red">deliveryman_id</span></code> | Edit Order | `{ id, product, deliveryman, recipient }` |
+DELETE | /orders/:id | `token JWT` e `id`: id referring to the recipient in the database | ❌ | Delete a deliveryman | `{ id, product, deliveryman, recipient }` |
