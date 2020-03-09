@@ -1,11 +1,13 @@
 import { darken } from 'polished';
 import styled from 'styled-components';
 
+import { colors } from '~/components/colors';
+
 export const Button = styled.button`
   color: #fff;
   align-items: center;
   padding: 9px;
-  background: #7d40e7;
+  background: ${colors.primary};
   border-radius: 4px;
   border: none;
 
@@ -20,7 +22,7 @@ export const Button = styled.button`
   }
 
   &:hover {
-    background: ${darken(0.1, '#7D40E7')};
+    background: ${darken(0.1, colors.primary)};
   }
 
   &:disabled {

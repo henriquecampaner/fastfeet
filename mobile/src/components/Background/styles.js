@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const ViewColor1 = styled.View`
   width: 100%;
-  height: 15%;
+  height: 12%;
   background: ${colors.primary};
   z-index: 2;
 `;

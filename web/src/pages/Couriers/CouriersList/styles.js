@@ -53,21 +53,4 @@ export const TableContainer = styled.section`
     margin-bottom: 10px;
     height: 55px;
   }
-
-  /* .status {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 35px;
-    padding: 5px 2px;
-    margin: auto 0;
-
-    span {
-      font-weight: bold;
-    }
-
-    svg {
-      margin-right: 10px;
-    }
-  } */
 `;

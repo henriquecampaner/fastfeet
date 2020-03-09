@@ -1,28 +1,27 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
-import { View, TouchableOpacity, Alert } from 'react-native';
+import { View, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
 
 import { useNavigation } from '@react-navigation/native';
-import { format, parseISO } from 'date-fns';
+import PropTypes from 'prop-types';
 
 import Background from '~/components/Background';
 import { colors } from '~/components/colors';
+import { Container, WrappContainer, InfoContainer } from '~/components/styles';
 import api from '~/services/api';
+import formatDate from '~/utils/FormatDate';
 
 import {
-  Container,
-  HeaderContainer,
-  Title,
-  WrappContainer,
   InfoText,
   AlignContainer,
   InfoTextMed,
   InfoTextSmall,
-  InfoContainerBottom,
   Bottons,
   ButtonText,
   DateContainer,
+  ButtonsContainer,
 } from './styles';
 
 export default function Details({ route }) {
@@ -46,18 +45,8 @@ export default function Details({ route }) {
   return (
     <Background>
       <Container>
-        <HeaderContainer>
-          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-            <Icon name="keyboard-arrow-left" color="#fff" size={30} />
-          </TouchableOpacity>
-          <View>
-            <Title>Delivery Details </Title>
-          </View>
-          <View />
-        </HeaderContainer>
-
         <WrappContainer>
-          <InfoContainerBottom style={{ marginBottom: 5 }}>
+          <InfoContainer style={{ marginBottom: 5 }}>
             <AlignContainer style={{ flexDirection: 'row' }}>
               <Icon name="local-shipping" color={colors.primary} size={20} />
               <InfoText>Informacoes da entrega</InfoText>
@@ -79,9 +68,9 @@ export default function Details({ route }) {
               <InfoTextMed>Product</InfoTextMed>
               <InfoTextSmall>{data?.product}</InfoTextSmall>
             </AlignContainer>
-          </InfoContainerBottom>
+          </InfoContainer>
 
-          <InfoContainerBottom style={{ marginBottom: 5 }}>
+          <InfoContainer style={{ marginBottom: 5 }}>
             <AlignContainer style={{ flexDirection: 'row' }}>
               <Icon name="event-note" color={colors.primary} size={20} />
               <InfoText>Delivery status</InfoText>
@@ -90,7 +79,11 @@ export default function Details({ route }) {
             <AlignContainer>
               <InfoTextMed>Status</InfoTextMed>
               <InfoTextSmall>
-                {data?.start_date ? 'In Progress' : 'Pending'}
+                {data.end_date
+                  ? 'Delivered'
+                  : data?.start_date
+                  ? 'In Progress'
+                  : 'Pending'}
               </InfoTextSmall>
             </AlignContainer>
 
@@ -99,38 +92,26 @@ export default function Details({ route }) {
                 <InfoTextMed>Collection date</InfoTextMed>
                 <InfoTextSmall>
                   {data?.start_date
-                    ? format(parseISO(data?.start_date), 'dd/MM/yyyy')
+                    ? formatDate(data?.start_date)
                     : 'Wait Collection'}
                 </InfoTextSmall>
               </View>
               <View>
                 <InfoTextMed>Delivery Date</InfoTextMed>
                 <InfoTextSmall>
-                  {data?.end_date
-                    ? format(parseISO(data?.end_date), 'dd/MM/yyyy')
-                    : '--/--/--'}
+                  {data?.end_date ? formatDate(data.end_date) : '--/--/--'}
                 </InfoTextSmall>
               </View>
             </DateContainer>
-          </InfoContainerBottom>
+          </InfoContainer>
 
-          <InfoContainerBottom
-            style={{
-              paddingEnd: 0,
-              paddingBottom: 0,
-              paddingLeft: 0,
-              paddingTop: 0,
-              flexDirection: 'row',
-            }}
-          >
+          <ButtonsContainer>
             {data.start_date ? (
-              <Bottons>
-                <ButtonText>Delivery Collected</ButtonText>
-              </Bottons>
+              undefined
             ) : (
               <Bottons onPress={handleCollect}>
                 <Icon name="assignment-turned-in" size={25} color="#0F4C81" />
-                <ButtonText> Collect Delivery</ButtonText>
+                <ButtonText> Collect {'\n'} Delivery</ButtonText>
               </Bottons>
             )}
 
@@ -140,7 +121,7 @@ export default function Details({ route }) {
               }
             >
               <Icon name="highlight-off" size={25} color="#E74040" />
-              <ButtonText>Report problem</ButtonText>
+              <ButtonText>Report {'\n'} Problem</ButtonText>
             </Bottons>
 
             <Bottons
@@ -149,20 +130,46 @@ export default function Details({ route }) {
               }
             >
               <Icon name="info-outline" size={25} color="#E7BA40" />
-              <ButtonText>View Problem</ButtonText>
+              <ButtonText>View {'\n'} Problem</ButtonText>
             </Bottons>
 
-            <Bottons
-              onPress={() =>
-                navigation.navigate('ConfirmDelivery', { infos: data })
-              }
-            >
-              <Icon name="check-circle" size={25} color={colors.primary} />
-              <ButtonText>Confirm delivery</ButtonText>
-            </Bottons>
-          </InfoContainerBottom>
+            {!data.end_date ? (
+              <Bottons
+                onPress={() =>
+                  navigation.navigate('ConfirmDelivery', { infos: data })
+                }
+              >
+                <Icon name="check-circle" size={25} color={colors.primary} />
+                <ButtonText>Confirm {'\n'} Delivery</ButtonText>
+              </Bottons>
+            ) : (
+              undefined
+            )}
+          </ButtonsContainer>
         </WrappContainer>
       </Container>
     </Background>
   );
 }
+
+Details.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      infos: PropTypes.shape({
+        id: PropTypes.number,
+        deliveryman_id: PropTypes.number,
+        recipient_id: PropTypes.number,
+        product: PropTypes.string,
+        start_date: PropTypes.string,
+        end_date: PropTypes.string,
+        recipient: PropTypes.shape({
+          name: PropTypes.string,
+          street: PropTypes.string,
+          number: PropTypes.string,
+          country: PropTypes.string,
+          city: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
+};

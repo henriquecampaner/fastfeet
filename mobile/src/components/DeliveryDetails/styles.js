@@ -2,42 +2,6 @@ import styled from 'styled-components/native';
 
 import { colors } from '~/components/colors';
 
-export const Container = styled.View`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 100;
-  align-items: center;
-`;
-
-export const HeaderContainer = styled.View`
-  width: 100%;
-  padding: 10px;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 25px;
-`;
-
-export const Title = styled.Text`
-  margin-top: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-`;
-
-export const WrappContainer = styled.View`
-  align-items: center;
-  width: 90%;
-  border-radius: 4px;
-`;
-
-export const InfoContainerBottom = styled.View`
-  background: #fff;
-  border: 1px solid #0000001a;
-  width: 100%;
-  padding: 10px;
-`;
-
 export const AlignContainer = styled.View`
   width: 95%;
   margin-bottom: 8px;
@@ -66,10 +30,18 @@ export const InfoTextSmall = styled.Text`
   color: #666666;
 `;
 
+export const ButtonsContainer = styled.View`
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+`;
+
 export const Bottons = styled.TouchableOpacity`
+  border-radius: 4px;
   border: 1px solid #0000001a;
   height: 83px;
-  width: 26%;
+  flex-grow: 1;
   align-items: center;
   justify-content: center;
   background: #f8f9fd;

@@ -1,8 +1,10 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { Container, ViewColor1, ViewColor2 } from './styles';
 
-export default function Test({ children }) {
+export default function Background({ children }) {
   return (
     <Container>
       <ViewColor1 />
@@ -11,3 +13,7 @@ export default function Test({ children }) {
     </Container>
   );
 }
+
+Background.propTypes = {
+  children: PropTypes.element.isRequired,
+};

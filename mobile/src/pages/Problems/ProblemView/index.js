@@ -1,33 +1,27 @@
 import React, { useMemo, useState } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { useNavigation } from '@react-navigation/native';
 import { format, parseISO } from 'date-fns';
+import PropTypes from 'prop-types';
 
 import Background from '~/components/Background';
-import api from '~/services/api';
-
 import {
   Container,
-  HeaderContainer,
-  Title,
   WrappContainer,
-  InfoContainerBottom,
-  ProblemText,
+  InfoContainer,
   AlignContainer,
-  ProblemTextSmall,
-} from './styles';
+} from '~/components/styles';
+import api from '~/services/api';
+
+import NoProlem from './NoProblem';
+import { ProblemText, ProblemTextSmall, Title } from './styles';
 
 export default function ProblemView({ route }) {
-  const navigation = useNavigation();
   const [problems, setProblems] = useState([]);
   const { id } = route.params.infos;
 
   useMemo(() => {
     async function getProblem() {
       const { data } = await api.get(`/orders/${id}/problems`);
-      // const { data } = await api.get(`/orders/22/problems`);
       setProblems(data);
     }
     getProblem();
@@ -36,39 +30,35 @@ export default function ProblemView({ route }) {
   return (
     <Background>
       <Container>
-        <HeaderContainer>
-          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-            <Icon name="keyboard-arrow-left" color="#fff" size={30} />
-          </TouchableOpacity>
-          <View>
-            <Title>View Problems</Title>
-          </View>
-          <View />
-        </HeaderContainer>
-
         <WrappContainer>
           <Title>Delivery {id}</Title>
 
           {problems.length > 0 ? (
             problems.map(problem => (
-              <InfoContainerBottom key={problem.id}>
+              <InfoContainer key={problem.id} style={{ marginTop: 10 }}>
                 <AlignContainer>
                   <ProblemText>{problem.description}</ProblemText>
                   <ProblemTextSmall>
                     {format(parseISO(problem.createdAt), 'dd/MM/yyyy')}
                   </ProblemTextSmall>
                 </AlignContainer>
-              </InfoContainerBottom>
+              </InfoContainer>
             ))
           ) : (
-            <InfoContainerBottom>
-              <AlignContainer style={{ justifyContent: 'center' }}>
-                <Text>Delivery does not have problems</Text>
-              </AlignContainer>
-            </InfoContainerBottom>
+            <NoProlem />
           )}
         </WrappContainer>
       </Container>
     </Background>
   );
 }
+
+ProblemView.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      infos: PropTypes.shape({
+        id: PropTypes.number,
+      }),
+    }),
+  }).isRequired,
+};

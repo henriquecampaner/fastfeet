@@ -66,7 +66,6 @@ export const Notification = styled.div`
 
 export const EditButton = styled(Link)`
   display: flex;
-  /* border-bottom: 1px solid #eeeeee; */
   border: none;
   padding-bottom: 10px;
   margin-bottom: 10px;

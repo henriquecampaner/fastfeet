@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Alert } from 'react-native';
+import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
 
 import { useNavigation } from '@react-navigation/native';
+import PropTypes from 'prop-types';
 
 import Background from '~/components/Background';
+import { Container, WrappContainer } from '~/components/styles';
 import api from '~/services/api';
 
 import {
-  Container,
-  HeaderContainer,
-  Title,
-  WrappContainer,
   SendButton,
   ButtonCapture,
   Camera,
@@ -59,20 +57,9 @@ export default function ConfirmDelivery({ route }) {
   return (
     <Background>
       <Container>
-        <HeaderContainer>
-          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-            <Icon name="keyboard-arrow-left" color="#fff" size={30} />
-          </TouchableOpacity>
-          <View>
-            <Title>Confirm delivery</Title>
-          </View>
-          <View />
-        </HeaderContainer>
-
         <WrappContainer>
           <Camera
             type={Camera.Constants.Type.back}
-            // flashMode={Camera.Constants.FlashMode.on}
             androidCameraPermissionOptions={{
               title: 'Permission to use camera',
               message: 'We need your permission to use your camera',
@@ -105,3 +92,16 @@ export default function ConfirmDelivery({ route }) {
     </Background>
   );
 }
+
+ConfirmDelivery.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      infos: PropTypes.shape({
+        id: PropTypes.number,
+        deliveryman_id: PropTypes.number,
+        recipient_id: PropTypes.number,
+        product: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};

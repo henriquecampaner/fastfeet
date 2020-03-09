@@ -21,6 +21,7 @@
     "axios": "^0.19.2",
     "date-fns": "^2.10.0",
     "immer": "^5.3.6",
+    "prop-types": "^15.7.2",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-camera": "^3.19.0",

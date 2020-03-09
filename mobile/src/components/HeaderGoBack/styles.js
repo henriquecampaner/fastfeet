@@ -1,13 +1,10 @@
 import styled from 'styled-components/native';
 
-export const ProblemText = styled.Text`
-  color: #999999;
-  font-size: 16px;
-`;
-
-export const ProblemTextSmall = styled.Text`
-  color: #c1c1c1;
-  font-size: 12px;
+export const HeaderContainer = styled.View`
+  width: 100%;
+  padding: 10px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const Title = styled.Text`

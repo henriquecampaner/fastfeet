@@ -12,7 +12,6 @@ export default function Moldal({
   content,
   moldalType,
 }) {
-  console.log(content);
   return (
     <ReactModal
       isOpen={showModal}
@@ -63,11 +62,13 @@ export default function Moldal({
               </span>
             </p>
 
-            <h3>Signature of recipient</h3>
             {content.signature ? (
-              <img src={content.signature.url} alt={content.id} />
+              <>
+                <h3>Signature of recipient</h3>
+                <img src={content.signature.url} alt={content.id} />
+              </>
             ) : (
-              <p>Delivery in progress</p>
+              undefined
             )}
           </>
         )}

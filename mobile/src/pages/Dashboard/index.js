@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useFocusEffect } from '@react-navigation/native';
-import { format, parseISO } from 'date-fns';
 
 import Delivery from '~/components/Delivery';
 import api from '~/services/api';

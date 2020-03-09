@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Details from '~/components/DeliveryDetails';
+import HeaderGoBack from '~/components/HeaderGoBack';
 
 import ConfirmDelivery from './pages/ConfirmDelivery';
 import Dashboard from './pages/Dashboard';
@@ -21,31 +22,34 @@ const Tab = createBottomTabNavigator();
 
 function DashboarMenu() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTitleAlign: 'center',
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: '#7d40e7' },
+        headerLeft: () => <HeaderGoBack />,
+      }}
+    >
       <Stack.Screen
         component={Dashboard}
         name="Dashboard"
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        component={Details}
-        name="Details"
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen component={Details} name="Details" />
       <Stack.Screen
         component={ProblemView}
         name="ViewProblem"
-        options={{ headerShown: false }}
+        options={{ title: 'View Problem' }}
       />
       <Stack.Screen
         component={ProblemAdd}
         name="AddProblem"
-        options={{ headerShown: false }}
+        options={{ title: 'Report Problem' }}
       />
       <Stack.Screen
         component={ConfirmDelivery}
         name="ConfirmDelivery"
-        options={{ headerShown: false }}
+        options={{ title: 'Confirm Delivery' }}
       />
     </Stack.Navigator>
   );

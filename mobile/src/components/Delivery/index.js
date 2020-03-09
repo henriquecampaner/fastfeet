@@ -3,10 +3,10 @@ import { View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { useNavigation } from '@react-navigation/native';
-import { format, parseISO } from 'date-fns';
+import PropTypes from 'prop-types';
 
-import Button from '~/components/Button';
 import { colors } from '~/components/colors';
+import formatDate from '~/utils/FormatDate';
 
 import {
   Container,
@@ -23,6 +23,7 @@ import {
 } from './styles';
 
 export default function Delivery({ data }) {
+  console.tron.log(data);
   const navigation = useNavigation();
   return (
     <Container>
@@ -54,7 +55,7 @@ export default function Delivery({ data }) {
           <SmallText>Date</SmallText>
           <DetailText>
             {data.start_date
-              ? format(parseISO(data.start_date), 'dd/MM/yyyy')
+              ? formatDate(data.start_date)
               : 'Ready for Collect'}
           </DetailText>
         </TextContainer>
@@ -74,12 +75,21 @@ export default function Delivery({ data }) {
           </TouchableOpacity>
         </TextContainer>
       </DetailsContainer>
-
-      {data.start_date ? (
-        <DetailText>oi</DetailText>
-      ) : (
-        <Button text="Collect Delivery" />
-      )}
     </Container>
   );
 }
+
+Delivery.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number,
+    product: PropTypes.string,
+    deliveryman_id: PropTypes.number,
+    recipient_id: PropTypes.number,
+    canceled_at: PropTypes.string,
+    start_date: PropTypes.string,
+    end_date: PropTypes.string,
+    recipient: PropTypes.shape({
+      city: PropTypes.string,
+    }),
+  }).isRequired,
+};

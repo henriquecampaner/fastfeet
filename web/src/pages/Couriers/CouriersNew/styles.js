@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { colors } from '~/components/colors';
+
 export const Container = styled.section`
   margin-top: 20px;
   width: 100%;
@@ -41,7 +43,7 @@ export const Container = styled.section`
         margin-top: 10px;
 
         &:focus {
-          border: 1px dotted #7d40e7;
+          border: 1px dotted ${colors.primary};
         }
 
         &::placeholder {

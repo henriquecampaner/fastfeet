@@ -1,12 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 
 import { useField } from '@unform/core';
+import PropTypes from 'prop-types';
 
 import { Container, TextInput } from './styles';
 
 function Input({ name, ...rest }) {
   const inputRef = useRef(null);
-  const { fieldName, registerField, defaultValue = '', error } = useField(name);
+  const { fieldName, registerField, defaultValue = '' } = useField(name);
   useEffect(() => {
     registerField({
       name: fieldName,
@@ -32,3 +33,7 @@ function Input({ name, ...rest }) {
   );
 }
 export default Input;
+
+Input.propTypes = {
+  name: PropTypes.string.isRequired,
+};

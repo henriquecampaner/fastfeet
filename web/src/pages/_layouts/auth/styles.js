@@ -1,9 +1,11 @@
 import { darken } from 'polished';
 import styled from 'styled-components';
 
+import { colors } from '~/components/colors';
+
 export const Wrapper = styled.div`
   height: 100%;
-  background: #7d40e7;
+  background: ${colors.primary};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +46,7 @@ export const Wrapper = styled.div`
         padding-left: 10px;
 
         &:focus {
-          border: 1px dotted #7d40e7;
+          border: 1px dotted ${colors.primary};
         }
 
         &::placeholder {
@@ -60,7 +62,7 @@ export const Wrapper = styled.div`
       height: 45px;
       margin: 2rem;
 
-      background: #7d40e7;
+      background: ${colors.primary};
       color: #fff;
 
       font-size: 1.6rem;
@@ -69,11 +71,11 @@ export const Wrapper = styled.div`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.05, '#7d40e7')};
+        background: ${darken(0.05, colors.primary)};
       }
 
       &:active {
-        background-color: #7d40e7;
+        background-color: ${colors.primary};
         transform: translateY(4px);
       }
     }

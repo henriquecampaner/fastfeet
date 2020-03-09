@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { darken } from 'polished';
 import styled from 'styled-components';
 
+import { colors } from '~/components/colors';
+
 export const ContentHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -52,7 +54,7 @@ export const ButtonSave = styled.button`
   justify-content: center;
   align-items: center;
   padding: 9px;
-  background: #7d40e7;
+  background: ${colors.primary};
 
   border-radius: 4px;
   border: none;
@@ -64,7 +66,7 @@ export const ButtonSave = styled.button`
   }
 
   &:hover {
-    background: ${darken(0.1, '#7D40E7')};
+    background: ${darken(0.1, colors.primary)};
   }
 
   svg {
