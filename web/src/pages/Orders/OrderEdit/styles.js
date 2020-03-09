@@ -28,7 +28,7 @@ export const Container = styled.section`
       width: 48%;
     }
 
-    .input-container {
+    .product-container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
