@@ -30,7 +30,7 @@
 
 
 <p align="center">
-  <img alt="Demo on Netlify" src="https://raw.githubusercontent.com/henriquecampaner/fastfeet/master/mobile/show.gif">
+  <img alt="Demo on Netlify" src="https://github.com/henriquecampaner/fastfeet/blob/master/mobile/show2.gif">
 </p>
 
 ## :rocket: Technologies
