@@ -28,10 +28,11 @@
   <a href="#memo-license">License</a>
 </p>
 
-![App Screenshot](https://res.cloudinary.com/lukemorales/image/upload/v1564536567/readme_logos/login_pj8pih.jpg)
-![App Screenshot](https://res.cloudinary.com/lukemorales/image/upload/v1564536567/readme_logos/schedules_tgpmie.jpg)
-![App Screenshot](https://res.cloudinary.com/lukemorales/image/upload/v1564536567/readme_logos/profile_nl7oco.jpg)
-![App Screenshot](https://res.cloudinary.com/lukemorales/image/upload/v1564536567/readme_logos/signup_xwdwqm.jpg)
+![App Screenshot](https://raw.githubusercontent.com/henriquecampaner/fastfeet/master/web/dashboard.JPG)
+![App Screenshot](https://raw.githubusercontent.com/henriquecampaner/fastfeet/master/web/couries.JPG)
+![App Screenshot](https://raw.githubusercontent.com/henriquecampaner/fastfeet/master/web/orders.JPG)
+![App Screenshot](https://raw.githubusercontent.com/henriquecampaner/fastfeet/master/web/recipient.JPG)
+![App Screenshot](https://raw.githubusercontent.com/henriquecampaner/fastfeet/master/web/signature.JPG)
 
 ## :rocket: Technologies
 
