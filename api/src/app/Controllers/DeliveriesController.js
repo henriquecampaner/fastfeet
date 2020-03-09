@@ -50,11 +50,14 @@ class DeliverymanController {
     const { id } = req.params;
 
     /** Check with the time is between 08:00 and 18:00 */
-    if (
-      !isAfter(start_date, startInterval) ||
-      !isBefore(start_date, endInterval)
-    ) {
-      res
+    if (!isBefore(parseISO(start_date), endInterval)) {
+      return res
+        .status(400)
+        .json({ error: 'Withdrawal available between 08:00 and 18:00' });
+    }
+
+    if (!isAfter(parseISO(start_date), startInterval)) {
+      return res
         .status(400)
         .json({ error: 'Withdrawal available between 08:00 and 18:00' });
     }

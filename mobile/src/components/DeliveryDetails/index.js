@@ -38,7 +38,7 @@ export default function Details({ route }) {
       Alert.alert('Delivery collected');
       navigation.navigate('Dashboard');
     } catch (error) {
-      Alert.alert(error);
+      Alert.alert('Withdrawal available between 08:00 and 18:00');
     }
   }
 
