@@ -30,12 +30,10 @@
 
 
 <p align="center">
-  <img alt="Demo on Netlify" src="https://res.cloudinary.com/lukemorales/image/upload/v1563425600/readme_logos/rocketshoes-native_gsjofr.gif">
+  <img alt="Demo on Netlify" src="https://raw.githubusercontent.com/henriquecampaner/fastfeet/master/mobile/show.gif">
 </p>
 
 ## :rocket: Technologies
-
-This project was developed at the [RocketSeat GoStack Bootcamp](https://rocketseat.com.br/bootcamp) with the following technologies:
 
 -  [ReactJS](https://reactjs.org/)
 -  [Redux](https://redux.js.org/)
